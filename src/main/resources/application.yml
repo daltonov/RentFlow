@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: rentflow
+
+  datasource:
+    url: jdbc:postgresql://localhost:55432/rentflow
+    username: rentflow
+    password: rentflow
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port: 8080
