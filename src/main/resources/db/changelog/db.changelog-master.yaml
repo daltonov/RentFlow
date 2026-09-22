@@ -2,3 +2,15 @@ databaseChangeLog:
   - include:
       file: changes/001-create-properties.sql
       relativeToChangelogFile: true
+
+  - include:
+      file: changes/002-create-guests.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: changes/003-remove-guest-email.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: changes/004-create-bookings.sql
+      relativeToChangelogFile: true

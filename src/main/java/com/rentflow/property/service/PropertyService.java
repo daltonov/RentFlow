@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.rentflow.property.domain.Property;
 import com.rentflow.property.dto.CreatePropertyRequest;
 import com.rentflow.common.exception.NotFoundException;
+import org.springframework.transaction.annotation.Propagation;
 import java.util.UUID;
 
 import java.util.List;
@@ -18,6 +19,11 @@ public class PropertyService {
 
     private final PropertyRepository propertyRepository;
     private final PropertyMapper propertyMapper;
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void lockForBooking(UUID id) {
+        propertyRepository.findByIdForUpdate(id)
+                .orElseThrow(() -> new NotFoundException("Property", id));
+    }
 
     public PropertyService(PropertyRepository propertyRepository,
                            PropertyMapper propertyMapper) {
